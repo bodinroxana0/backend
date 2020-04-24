@@ -8,7 +8,6 @@
   "description": "",
   "main": "login.js",
   "scripts": {
-    "build":"node build login.js",
     "start": "node login.js"
   },
   "author": "",
