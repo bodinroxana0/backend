@@ -49,6 +49,12 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json({limit:"50mb",extended:true}));
 
 //server settings
+app.set( 'port', ( process.env.PORT || 5000 ));
+
+// Start node server
+app.listen( app.get( 'port' ), function() {
+  console.log( 'Node server is running on port ' + app.get( 'port' ));
+  });
 // var server = app.listen(3000, "127.0.0.1", function () {
 
 // 	var host = server.address().address
