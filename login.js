@@ -41,16 +41,17 @@ app.use(
 //   password: "isawsuits2@",
 //   database: "community"
 // });
-var connection = mysql.createConnection({
+//mysql://b39eae7963cf1c:255c57f9@us-cdbr-iron-east-01.cleardb.net/heroku_50ffed2af4793d2?reconnect=true
+var connection = mysql.createPool({
   host: "us-cdbr-iron-east-01.cleardb.net",
   user: "b39eae7963cf1c",
   password: "255c57f9",
   database: "heroku_50ffed2af4793d2"
 });
-connection.connect(function(err) {
-	if (err) throw err;
-	console.log('You are now connected with mysql database...');
-  });
+// connection.connect(function(err) {
+// 	if (err) throw err;
+// 	console.log('You are now connected with mysql database...');
+//   });
 //json settings for sending more amount of data between client and server
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json({limit:"50mb",extended:true}));
