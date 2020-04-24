@@ -43,9 +43,9 @@ app.use(
 // });
 var connection = mysql.createConnection({
   host: "us-cdbr-iron-east-01.cleardb.net",
-  user: "b5c27c10fb0016",
-  password: "c68a2634",
-  database: "heroku_94413e35cd6fc18"
+  user: "b39eae7963cf1c",
+  password: "255c57f9",
+  database: "heroku_50ffed2af4793d2"
 });
 connection.connect(function(err) {
 	if (err) throw err;
