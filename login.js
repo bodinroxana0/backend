@@ -17,6 +17,7 @@ var helmet = require('helmet');
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 var sess; //to store session
+const PORT = process.env.PORT || 5000;
 
 // https.createServer({
 //   key: fs.readFileSync('server.key'),
@@ -49,7 +50,6 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json({limit:"50mb",extended:true}));
 
 //server settings
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
 });
