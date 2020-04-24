@@ -49,13 +49,13 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json({limit:"50mb",extended:true}));
 
 //server settings
-var server = app.listen(3000, "127.0.0.1", function () {
+// var server = app.listen(3000, "127.0.0.1", function () {
 
-	var host = server.address().address
-	var port = server.address().port
+// 	var host = server.address().address
+// 	var port = server.address().port
   
-	console.log("Example app listening at http://%s:%s", host, port)
- });
+// \\\	console.log("Example app listening at http://%s:%s", host, port)
+//  });
 ///////////////////encrypt
  function encrypt(text) {
 	let cipher = crypto.createCipheriv(algorithm, Buffer.from(key), iv);
