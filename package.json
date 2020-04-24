@@ -8,6 +8,7 @@
   "description": "",
   "main": "login.js",
   "scripts": {
+    "build":"node build login.js",
     "start": "node login.js"
   },
   "author": "",
@@ -23,6 +24,7 @@
     "helmet": "^3.22.0",
     "morgan": "^1.10.0",
     "mysql": "^2.17.1",
+    "serve": "^11.3.0",
     "zlib": "^1.0.5"
   }
 }
