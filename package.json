@@ -8,7 +8,7 @@
   "description": "",
   "main": "login.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node login.js"
   },
   "author": "",
   "license": "ISC",
