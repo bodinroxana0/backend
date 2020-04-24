@@ -98,7 +98,9 @@ app.use((req, res, next) => {
     }
     next();
 });
-
+app.get('/', function (req, res) {
+	res.render('login.html');
+});
 // //rest api to get all customers
 app.get('/users', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
