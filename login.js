@@ -99,7 +99,7 @@ app.get('/users', function (req, res) {
  });
  app.get('/provider', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
-	connection.query('SELECT * FROM community.provider INNER JOIN community.services ON community.provider.services_Id = community.services.Id', function (error, results, fields) {
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	   //console.log(results)
@@ -109,7 +109,7 @@ app.get('/users', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 	var service = req.params.service;
 	var city = req.params.city;
-	connection.query('SELECT * FROM community.provider INNER JOIN community.services ON community.provider.services_Id = community.services.Id WHERE ServiceName= ? AND City= ?',[service,city], function (error, results, fields) {
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceName= ? AND City= ?',[service,city], function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	   console.log(results)
@@ -118,7 +118,7 @@ app.get('/users', function (req, res) {
  app.get('/searchprovider1/:domain', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 	var domain = req.params.domain;
-	connection.query('SELECT * FROM community.provider INNER JOIN community.services ON community.provider.services_Id = community.services.Id WHERE ServiceDomain= ?',[domain], function (error, results, fields) {
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceDomain= ?',[domain], function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	   console.log(results)
@@ -127,7 +127,7 @@ app.get('/users', function (req, res) {
  app.get('/searchprovider2/:service', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 	var service = req.params.service;
-	connection.query('SELECT * FROM community.provider INNER JOIN community.services ON community.provider.services_Id = community.services.Id WHERE ServiceName= ?',[service], function (error, results, fields) {
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceName= ?',[service], function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	   console.log(results)
@@ -136,7 +136,7 @@ app.get('/users', function (req, res) {
  app.get('/searchprovider3/:region', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 	var region = req.params.region;
-	connection.query('SELECT * FROM community.provider INNER JOIN community.services ON community.provider.services_Id = community.services.Id WHERE Region= ?',[region], function (error, results, fields) {
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE Region= ?',[region], function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	   console.log(results)
@@ -145,7 +145,7 @@ app.get('/users', function (req, res) {
  app.get('/searchprovider4/:city', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 	var city = req.params.city;
-	connection.query('SELECT * FROM community.provider INNER JOIN community.services ON community.provider.services_Id = community.services.Id WHERE City= ?',[city], function (error, results, fields) {
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE City= ?',[city], function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	   console.log(results)
@@ -155,7 +155,7 @@ app.get('/users', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 	var domain = req.params.domain;
 	var region = req.params.region;
-	connection.query('SELECT * FROM community.provider INNER JOIN community.services ON community.provider.services_Id = community.services.Id WHERE ServiceDomain= ? AND Region= ?',[domain,region], function (error, results, fields) {
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceDomain= ? AND Region= ?',[domain,region], function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	   console.log(results)
@@ -165,7 +165,7 @@ app.get('/users', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 	var domain = req.params.domain;
 	var city = req.params.city;
-	connection.query('SELECT * FROM community.provider INNER JOIN community.services ON community.provider.services_Id = community.services.Id WHERE ServiceDomain= ? AND City= ?',[domain,city], function (error, results, fields) {
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceDomain= ? AND City= ?',[domain,city], function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	   console.log(results)
