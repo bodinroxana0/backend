@@ -330,7 +330,7 @@ app.post('/SignUpProvider', function(req, res) {
 		Description:req.body.description,
 		Photo:req.body.path
 		};
-		//console.log(newUser);
+		console.log(newUser);
 		connection.query('INSERT INTO provider SET ?', newUser, function (error, results, fields) {
 			if (error) {
 				if(error.code == 'ER_DUP_ENTRY' || error.errno == 1062)
@@ -338,10 +338,11 @@ app.post('/SignUpProvider', function(req, res) {
 					res.send('This username is taken. Try another one!');
 				}
 				else{
-					throw error;
+					console.log(error);
 				}
 
 			}
+			console.log("succesfully");
 			res.end(JSON.stringify(results));
 		  });
 	});
@@ -362,7 +363,8 @@ app.post('/Docs', function(req, res) {
 				Image:element
 			};
 			connection.query('INSERT INTO docs SET ?', elem, function (error, results, fields) {
-				if (error) throw error;
+				if (error) console.log(error);
+				console.log("succesfully");
 				res.end(JSON.stringify(results));
 			  });
 		});
