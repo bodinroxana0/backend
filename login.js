@@ -354,7 +354,7 @@ app.post('/Docs', function(req, res) {
 		var res;
 		console.log(username);
 		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
-			if (error) throw error;
+			if (error) console.log(error);
 			id=results[0].Id;
 			console.log(id);
 		img.forEach(element => {
