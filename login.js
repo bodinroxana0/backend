@@ -359,17 +359,18 @@ app.post('/Docs', function(req, res) {
 			if (error) console.log(error);
 			id=results[0].Id;
 			console.log(id);
+		});
 		img.forEach(element => {
 			elem={
 				IdProvider: id,
 				Image:element
 			};
-			connection.query('INSERT INTO docs SET ?', elem, function (error, results, fields) {
-				if (error) console.log(error);
-				console.log("succesfully");
-				res.end(JSON.stringify(results));
-			  });
-		});
+		connection.query('INSERT INTO docs SET ?', elem, function (error, results, fields) {
+			if (error) console.log(error);
+			console.log("succesfully");
+			res.end(JSON.stringify(results));
+		  });
+		
 	});
 });
 // route for user logout
