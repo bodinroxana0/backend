@@ -360,6 +360,7 @@ app.post('/Docs', function(req, res) {
 			id=results[0].Id;
 			console.log(id);
 		});
+		console.log(id);
 		img.forEach(element => {
 			elem={
 				IdProvider: id,
