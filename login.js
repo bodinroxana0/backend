@@ -290,6 +290,7 @@ app.get('/users/:UserName/:Password', function(req, res) {
 	}
 	});
 app.post('/SignUpUser', function(req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 		var encrypted=encrypt(req.body.password);
 		var k = zlib.gzipSync(JSON.stringify(key)).toString('base64');
 		const newUser = {
@@ -312,6 +313,7 @@ app.post('/SignUpUser', function(req, res) {
 		  });
 	});
 app.post('/SignUpProvider', function(req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 		var encrypted=encrypt(req.body.password);
 		var k = zlib.gzipSync(JSON.stringify(key)).toString('base64');
 		const newUser = {
@@ -347,6 +349,7 @@ app.post('/SignUpProvider', function(req, res) {
 		  });
 	});
 app.post('/Docs', function(req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 		var img= req.body.path2;
 		var username=req.body.userName;
 		var id;
@@ -372,6 +375,7 @@ app.post('/Docs', function(req, res) {
 });
 // route for user logout
 app.get('/logout', (req, res) => {
+	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app');
 	console.log('Cookie before: '+sess.username);
 	req.session.destroy((err) => {
         if(err) {
