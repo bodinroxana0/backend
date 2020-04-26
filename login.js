@@ -332,7 +332,7 @@ app.post('/SignUpProvider', function(req, res) {
 		Description:req.body.description,
 		Photo:req.body.path
 		};
-		console.log(newUser);
+		console.log(req.body.services_Id);
 		connection.query('INSERT INTO provider SET ?', newUser, function (error, results, fields) {
 			if (error) {
 				if(error.code == 'ER_DUP_ENTRY' || error.errno == 1062)
@@ -340,7 +340,7 @@ app.post('/SignUpProvider', function(req, res) {
 					res.end('Numele de utilizator este deja folosit de altcineva. Incearca altul!');
 				}
 				else{
-					console.log(error);
+					throw error;
 				}
 
 			}
@@ -356,7 +356,7 @@ app.post('/Docs', function(req, res) {
 		var res;
 		console.log(username);
 		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
-			if (error) console.log(error);
+			if (error) throw error;
 			id=results[0].Id;
 			console.log(id);
 		});
@@ -366,7 +366,7 @@ app.post('/Docs', function(req, res) {
 				Image:element
 			};
 		connection.query('INSERT INTO docs SET ?', elem, function (error, results, fields) {
-			if (error) console.log(error);
+			if (error) throw error;
 			res.end('Contul a fost creat cu succes!');
 		  });
 		
