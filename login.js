@@ -359,8 +359,6 @@ app.post('/Docs', function(req, res) {
 			if (error) throw error;
 			id=results[0].Id;
 			console.log(id);
-		});
-		console.log(id);
 		img.forEach(element => {
 			elem={
 				IdProvider: id,
@@ -372,6 +370,7 @@ app.post('/Docs', function(req, res) {
 				res.end('Contul a fost creat cu succes!');
 			});
 		}
+	});
 	});
 });
 // route for user logout
