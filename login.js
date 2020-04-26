@@ -344,7 +344,7 @@ app.post('/SignUpProvider', function(req, res) {
 				}
 
 			}
-			res.end('Contul a fost crea cu succes!');
+			res.end('ok');
 		  });
 	});
 app.post('/Docs', function(req, res) {
@@ -367,8 +367,7 @@ app.post('/Docs', function(req, res) {
 			};
 		connection.query('INSERT INTO docs SET ?', elem, function (error, results, fields) {
 			if (error) console.log(error);
-			console.log("succesfully");
-			res.end(JSON.stringify(results));
+			res.end('Contul a fost creat cu succes!');
 		  });
 		
 	});
