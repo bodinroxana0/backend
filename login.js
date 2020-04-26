@@ -344,7 +344,7 @@ app.post('/SignUpProvider', function(req, res) {
 				}
 
 			}
-			res.end('ok');
+			res.end(JSON.stringify(results));
 		  });
 	});
 app.post('/Docs', function(req, res) {
