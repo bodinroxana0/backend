@@ -344,7 +344,7 @@ app.post('/SignUpProvider', function(req, res) {
 				}
 
 			}
-			res.end(JSON.stringify(results));
+			res.end('ok');
 		  });
 	});
 app.post('/Docs', function(req, res) {
@@ -365,11 +365,12 @@ app.post('/Docs', function(req, res) {
 				IdProvider: id,
 				Image:element
 			};
-		connection.query('INSERT INTO docs SET ?', elem, function (error, results, fields) {
-			if (error) throw error;
-			res.end('Contul a fost creat cu succes!');
-		  });
-		
+		if(elem.IdProvider && elem.Image){
+			connection.query('INSERT INTO docs SET ?', elem, function (error, results, fields) {
+				if (error) throw error;
+				res.end('Contul a fost creat cu succes!');
+			});
+		}
 	});
 });
 // route for user logout
