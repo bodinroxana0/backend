@@ -337,15 +337,14 @@ app.post('/SignUpProvider', function(req, res) {
 			if (error) {
 				if(error.code == 'ER_DUP_ENTRY' || error.errno == 1062)
 				{
-					res.send('This username is taken. Try another one!');
+					res.end('Numele de utilizator este deja folosit de altcineva. Incearca altul!');
 				}
 				else{
 					console.log(error);
 				}
 
 			}
-			console.log("succesfully");
-			res.end(JSON.stringify(results));
+			res.end('Contul a fost crea cu succes!');
 		  });
 	});
 app.post('/Docs', function(req, res) {
