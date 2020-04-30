@@ -91,7 +91,7 @@ app.get('/users', function (req, res) {
 });
 app.get('/users_count', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
-	connection.query('select COUNT(*) from user', function (error, results, fields) {
+	connection.query('select COUNT(*) as count from user', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
@@ -105,7 +105,7 @@ app.get('/users_count', function (req, res) {
  });
  app.get('/services_count', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
-	connection.query('select COUNT(*) from services', function (error, results, fields) {
+	connection.query('select COUNT(*) as count from services', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
@@ -119,7 +119,7 @@ app.get('/users_count', function (req, res) {
  });
  app.get('/provider_count', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
-	connection.query('SELECT COUNT(*) FROM provider ', function (error, results, fields) {
+	connection.query('SELECT COUNT(*) as count FROM provider ', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
@@ -199,7 +199,7 @@ app.get('/users_count', function (req, res) {
  });
  app.get('/cities_count', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
-	connection.query('select COUNT(*) from cities', function (error, results, fields) {
+	connection.query('select COUNT(*) as count from cities', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
