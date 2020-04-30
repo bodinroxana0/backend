@@ -87,7 +87,13 @@ app.get('/users', function (req, res) {
 	connection.query('select * from user', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
-	   //console.log(results)
+	 });
+});
+app.get('/users_count', function (req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	connection.query('select COUNT(*) from user', function (error, results, fields) {
+	   if (error) throw error;
+	   res.end(JSON.stringify(results));
 	 });
 });
  app.get('/services', function (req, res) {
@@ -95,7 +101,13 @@ app.get('/users', function (req, res) {
 	connection.query('select * from services', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
-	   //console.log(results)
+	 });
+ });
+ app.get('/services_count', function (req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	connection.query('select COUNT(*) from services', function (error, results, fields) {
+	   if (error) throw error;
+	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/provider', function (req, res) {
@@ -103,7 +115,13 @@ app.get('/users', function (req, res) {
 	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
-	   //console.log(results)
+	 });
+ });
+ app.get('/provider_count', function (req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	connection.query('SELECT COUNT(*) FROM provider ', function (error, results, fields) {
+	   if (error) throw error;
+	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/searchprovider/:service/:city', function (req, res) {
@@ -177,7 +195,13 @@ app.get('/users', function (req, res) {
 	connection.query('select * from cities', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
-	   //console.log(results)
+	 });
+ });
+ app.get('/cities_count', function (req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	connection.query('select COUNT(*) from cities', function (error, results, fields) {
+	   if (error) throw error;
+	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/counties', function (req, res) {
@@ -185,18 +209,15 @@ app.get('/users', function (req, res) {
 	connection.query('select * from counties', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
-	  // console.log(results)
 	 });
  });
  app.get('/cities/:county_name', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
 	var county_name = req.params.county_name;
-	//console.log(county_name);
 	if(county_name){
 		connection.query('select * from cities  WHERE county_name = ?', [county_name], function (error, results, fields) {
 		if (error) throw error;
 		res.end(JSON.stringify(results));
-		//console.log(results)
 		});
 	}
  });
@@ -205,7 +226,6 @@ app.get('/users', function (req, res) {
 	connection.query('select * from services', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
-	  // console.log(results);
 	 });
  });
  app.get('/services/:domain', function (req, res) {
@@ -213,6 +233,15 @@ app.get('/users', function (req, res) {
 	var domain = req.params.domain;
 	if(domain){
 		connection.query('select * from services  WHERE ServiceDomain = ?', [domain], function (error, results, fields) {
+		if (error) throw error;
+		res.end(JSON.stringify(results));
+		});
+	}
+ });
+ app.get('/services_count', function (req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	if(domain){
+		connection.query('select COUNT(*) from services', function (error, results, fields) {
 		if (error) throw error;
 		res.end(JSON.stringify(results));
 		});
