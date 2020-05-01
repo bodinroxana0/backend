@@ -288,6 +288,23 @@ app.post('/LoginGoogle', function(req, res) {
 	console.log('Cookie: '+sess.username);
 	res.end('Bun venit, '+username+" !");
 });
+app.get('/provider/:FirstName/:LastName', function(req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
+	var firstname = req.params.FirstName;
+	var lastname = req.params.LastName;
+	if (firstname && lastname) {
+		connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE FirstName = ? AND LastName = ?', [firstname,lastname], function(error, results, fields) {
+			if (results.length > 0) {
+				res.end(JSON.stringify(results));
+				console.log(results);
+			}
+			else {
+				console.log('Providerul nu exista!');
+			}			
+			res.end();
+		});
+	}
+});
  //Login + setarea session 
 app.get('/users/:UserName/:Password', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
