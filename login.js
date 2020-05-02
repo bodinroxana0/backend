@@ -429,6 +429,7 @@ app.post('/rating', function(req, res) {
 		var id;
 		var elem;
 		console.log(username);
+		if(username){
 		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
 			if (error) throw error;
 			id=results[0].Id;
@@ -444,6 +445,7 @@ app.post('/rating', function(req, res) {
 			});
 		}
 	});
+	}
 });
 
 // route for user logout
