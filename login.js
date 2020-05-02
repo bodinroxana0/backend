@@ -423,7 +423,7 @@ app.post('/Docs', function(req, res) {
 app.post('/rating', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
 		var rating= req.body.rating;
-		var username=req.body.name;
+		var username=req.body.username;
 		console.log(rating);
 		console.log(username);
 		var id;
