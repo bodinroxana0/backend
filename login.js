@@ -16,7 +16,7 @@ var https = require('https');
 var helmet = require('helmet');
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
-var sess; //to store session
+var sess=0; //to store session
 const PORT = process.env.PORT || 5000;
 
 //for middleware protection
@@ -467,6 +467,8 @@ app.post('/rating', function(req, res) {
 		}
 	});
 	}
+	else
+		res.end("Trebuie sa va logati pentru a oferi un rating!");
 });
 
 // route for user logout
