@@ -16,7 +16,7 @@ var https = require('https');
 var helmet = require('helmet');
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
-var sess=0; //to store session
+var sess; //to store session
 const PORT = process.env.PORT || 5000;
 
 //for middleware protection
@@ -429,7 +429,9 @@ app.post('/rating', function(req, res) {
 		var id;
 		var elem;
 		console.log(username);
-		if(username && sess.username!=0){
+		try{
+		console.log(sess.username)
+		if(username){
 		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
 			if (error) throw error;
 			id=results[0].Id;
@@ -467,8 +469,12 @@ app.post('/rating', function(req, res) {
 		}
 	});
 	}
-	else
+}
+catch
+{
 		res.end("Trebuie sa va logati pentru a oferi un rating!");
+}
+
 });
 
 // route for user logout
