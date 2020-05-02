@@ -420,6 +420,32 @@ app.post('/Docs', function(req, res) {
 	});
 	});
 });
+app.post('/rating', function(req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
+		var rating= req.body.rating;
+		var username=req.body.name;
+		console.log(rating);
+		console.log(username);
+		var id;
+		var elem;
+		console.log(username);
+		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
+			if (error) throw error;
+			id=results[0].Id;
+			console.log(id);
+			elem={
+				IdProvider: id,
+				Rating:rating
+			};
+		if(id){
+			connection.query('INSERT INTO rating SET ?', elem, function (error, results, fields) {
+				if (error) throw error;
+				res.end('Ratingul a fost introdus!');
+			});
+		}
+	});
+});
+
 // route for user logout
 app.get('/logout', (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
