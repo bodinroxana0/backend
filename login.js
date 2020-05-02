@@ -454,7 +454,8 @@ app.post('/rating', function(req, res) {
 				}
 				connection.query('SELECT AVG(Rating) as medie from rating WHERE IdProvider=?', id, function (error, results, fields) {
 					if (error) throw error;
-					var med=resuls[0].medie;
+					var med=results[0].medie;
+					console.log(med);
 					connection.query('INSERT INTO provider SET Rating=?', med, function (error, results, fields) {
 						if (error) throw error;
 						res.end('Ratingul a fost accordat cu succes!');
