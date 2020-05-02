@@ -429,20 +429,40 @@ app.post('/rating', function(req, res) {
 		var id;
 		var elem;
 		console.log(username);
-		if(username){
+		if(username && sess.username!=0){
 		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
 			if (error) throw error;
 			id=results[0].Id;
 			console.log(id);
 			elem={
 				IdProvider: id,
+				IdUser: sess.username,
 				Rating:rating
 			};
 		if(id){
 			connection.query('INSERT INTO rating SET ?', elem, function (error, results, fields) {
-				if (error) throw error;
-				res.end('Ratingul a fost introdus!');
+				if (error)
+				{
+					if(error.code == 'ER_DUP_ENTRY' || error.errno == 1062)
+					{
+						res.end('Ai oferit deja un rating acestui utilizator!');
+					}
+					else
+					{
+						throw error;
+					}
+				}
+				connection.query('SELECT AVG(Rating) as medie from rating WHERE IdProvider=?', id, function (error, results, fields) {
+					if (error) throw error;
+					var med=resuls[0].medie;
+					connection.query('INSERT INTO provider SET Rating=?', med, function (error, results, fields) {
+						if (error) throw error;
+						res.end('Ratingul a fost accordat cu succes!');
+					});
+					
+				});
 			});
+
 		}
 	});
 	}
