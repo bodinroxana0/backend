@@ -458,7 +458,7 @@ app.post('/rating', function(req, res) {
 					if (error) throw error;
 					var med=results[0].medie;
 					console.log(med);
-					connection.query('INSERT INTO provider SET Rating=?', med, function (error, results, fields) {
+					connection.query('UPDATE provider SET Rating=? WHERE Id=?', [med,id], function (error, results, fields) {
 						if (error) throw error;
 						res.end('Ratingul a fost accordat cu succes!');
 					});
