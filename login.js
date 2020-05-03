@@ -449,6 +449,7 @@ app.post('/rating', function(req, res) {
 					res.end("Ati acordat deja un rating acestui utilizator!");
 				}
 				catch{
+					console.log(elem);
 				connection.query('INSERT INTO rating SET ?', elem, function (error, results, fields) {
 					if (error)
 							throw error;
