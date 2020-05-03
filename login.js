@@ -444,10 +444,11 @@ app.post('/rating', function(req, res) {
 			connection.query('SELECT Rating FROM rating WHERE IdUser= ? AND IdProvider=?', [sess.username,id], function (error, results, fields) {
 				if (error)
 					throw error;
-				if(results[0].Rating){
+				try{
+					console.log(results[0].Rating);
 					res.end("Ati acordat deja un rating acestui utilizator!");
 				}
-				else{
+				catch{
 				connection.query('INSERT INTO rating SET ?', elem, function (error, results, fields) {
 					if (error)
 							throw error;
