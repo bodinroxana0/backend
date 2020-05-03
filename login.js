@@ -428,7 +428,6 @@ app.post('/rating', function(req, res) {
 		console.log(username);
 		var id;
 		var elem;
-		console.log(username);
 		try{
 		console.log(sess.username)
 		if(username){
@@ -442,33 +441,31 @@ app.post('/rating', function(req, res) {
 				Rating:rating
 			};
 		if(id){
-			connection.query('INSERT INTO rating SET ?', elem, function (error, results, fields) {
+			connection.query('SELECT Rating FROM rating WHERE IdUser= ? AND IdProvider=?', [sess.username,id], function (error, results, fields) {
 				if (error)
-				{
-					if(error.code == 'ER_DUP_ENTRY' || error.errno == 1062)
-					{
-						res.end('Ai oferit deja un rating acestui utilizator!');
-					}
-					else
-					{
-						throw error;
-					}
+					throw error;
+				if(results[0].Rating){
+					res.end("Ati acordat deja un rating acestui utilizator!");
 				}
-				connection.query('SELECT AVG(Rating) as medie from rating WHERE IdProvider=?', id, function (error, results, fields) {
-					if (error) throw error;
-					var med=results[0].medie;
-					console.log(med);
-					connection.query('UPDATE provider SET Rating=? WHERE Id=?', [med,id], function (error, results, fields) {
+				else{
+				connection.query('INSERT INTO rating SET ?', elem, function (error, results, fields) {
+					if (error)
+							throw error;
+					connection.query('SELECT AVG(Rating) as medie from rating WHERE IdProvider=?', id, function (error, results, fields) {
 						if (error) throw error;
-						res.end('Ratingul a fost accordat cu succes!');
+						var med=results[0].medie;
+						console.log(med);
+						connection.query('UPDATE provider SET Rating=? WHERE Id=?', [med,id], function (error, results, fields) {
+							if (error) throw error;
+							res.end('Ratingul a fost accordat cu succes!');
+						});
 					});
-					
 				});
-			});
-
-		}
-	});
+			}
+		});
 	}
+});
+}
 }
 catch
 {
