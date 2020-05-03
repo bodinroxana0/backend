@@ -440,7 +440,7 @@ app.post('/rating', function(req, res) {
 				IdUser: sess.username,
 				Rating:rating
 			};
-		if(id){
+		if(id && sess.username!=0){
 			connection.query('SELECT Rating FROM rating WHERE IdUser= ? AND IdProvider=?', [sess.username,id], function (error, results, fields) {
 				if (error)
 					throw error;
@@ -465,6 +465,7 @@ app.post('/rating', function(req, res) {
 			}
 		});
 	}
+	else res.end("Trebuie sa va logati pentru a oferi un rating!");
 });
 }
 }
