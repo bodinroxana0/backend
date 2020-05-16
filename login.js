@@ -24,7 +24,7 @@ app.use(helmet());
 //use cors to allow cross origin resource sharing
 app.use(
   cors({
-    origin: 'https://comunitate.netlify.app',
+    origin: 'https://localhost:3001',
     credentials: true,
   }));
 
@@ -83,49 +83,49 @@ app.use((req, res, next) => {
 });
 // //rest api to get all customers
 app.get('/users', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('select * from user', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
 });
 app.get('/users_count', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('select COUNT(*) as count from user', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
 });
  app.get('/services', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('select * from services', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/services_count', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('select COUNT(*) as count from services', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/provider', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/provider_count', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('SELECT COUNT(*) as count FROM provider ', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/searchprovider/:service/:city', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var service = req.params.service;
 	var city = req.params.city;
 	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceName= ? AND City= ?',[service,city], function (error, results, fields) {
@@ -135,7 +135,7 @@ app.get('/users_count', function (req, res) {
 	 });
  });
  app.get('/searchprovider1/:domain', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var domain = req.params.domain;
 	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceDomain= ?',[domain], function (error, results, fields) {
 	   if (error) throw error;
@@ -144,7 +144,7 @@ app.get('/users_count', function (req, res) {
 	 });
  });
  app.get('/searchprovider2/:service', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var service = req.params.service;
 	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceName= ?',[service], function (error, results, fields) {
 	   if (error) throw error;
@@ -153,7 +153,7 @@ app.get('/users_count', function (req, res) {
 	 });
  });
  app.get('/searchprovider3/:region', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var region = req.params.region;
 	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE Region= ?',[region], function (error, results, fields) {
 	   if (error) throw error;
@@ -162,7 +162,7 @@ app.get('/users_count', function (req, res) {
 	 });
  });
  app.get('/searchprovider4/:city', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var city = req.params.city;
 	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE City= ?',[city], function (error, results, fields) {
 	   if (error) throw error;
@@ -171,7 +171,7 @@ app.get('/users_count', function (req, res) {
 	 });
  });
  app.get('/searchprovider5/:domain/:region', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var domain = req.params.domain;
 	var region = req.params.region;
 	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceDomain= ? AND Region= ?',[domain,region], function (error, results, fields) {
@@ -181,7 +181,7 @@ app.get('/users_count', function (req, res) {
 	 });
  });
  app.get('/searchprovider6/:domain/:city', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var domain = req.params.domain;
 	var city = req.params.city;
 	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceDomain= ? AND City= ?',[domain,city], function (error, results, fields) {
@@ -191,28 +191,28 @@ app.get('/users_count', function (req, res) {
 	 });
  });
  app.get('/cities', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('select * from cities', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/cities_count', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('select COUNT(*) as count from cities', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/counties', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('select * from counties', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/cities/:county_name', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var county_name = req.params.county_name;
 	if(county_name){
 		connection.query('select * from cities  WHERE county_name = ?', [county_name], function (error, results, fields) {
@@ -222,14 +222,14 @@ app.get('/users_count', function (req, res) {
 	}
  });
  app.get('/domain', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	connection.query('select * from services', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
  });
  app.get('/services/:domain', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var domain = req.params.domain;
 	if(domain){
 		connection.query('select * from services  WHERE ServiceDomain = ?', [domain], function (error, results, fields) {
@@ -239,7 +239,7 @@ app.get('/users_count', function (req, res) {
 	}
  });
  app.get('/services_count', function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	if(domain){
 		connection.query('select COUNT(*) from services', function (error, results, fields) {
 		if (error) throw error;
@@ -248,7 +248,7 @@ app.get('/users_count', function (req, res) {
 	}
  });
  app.get('/phone/:username',function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var username = req.params.username;
 	if(username){
 		connection.query('select Phone from provider WHERE UserName = ?', [username], function (error, results, fields) {
@@ -269,7 +269,7 @@ app.get('/users_count', function (req, res) {
 	}
  });
  app.post('/LoginFB', function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var username = req.body.name;
 	var email = req.body.email;
 	var userID = req.body.userID;
@@ -279,7 +279,7 @@ app.get('/users_count', function (req, res) {
 	res.send('Bun venit, '+username+" !");
 });
 app.post('/LoginGoogle', function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var username = req.body.username;
 	var email = req.body.email;
 	var userID = req.body.Googleid;
@@ -289,7 +289,7 @@ app.post('/LoginGoogle', function(req, res) {
 	res.end('Bun venit, '+username+" !");
 });
 app.get('/provider/:FirstName/:LastName', function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var firstname = req.params.FirstName;
 	var lastname = req.params.LastName;
 	if (firstname && lastname) {
@@ -307,7 +307,7 @@ app.get('/provider/:FirstName/:LastName', function(req, res) {
 });
  //Login + setarea session 
 app.get('/users/:UserName/:Password', function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	var username = req.params.UserName;
 	var password = req.params.Password;
 	if (username && password) {
@@ -337,7 +337,7 @@ app.get('/users/:UserName/:Password', function(req, res) {
 	}
 	});
 app.post('/SignUpUser', function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 		var encrypted=encrypt(req.body.password);
 		var k = zlib.gzipSync(JSON.stringify(key)).toString('base64');
 		const newUser = {
@@ -360,7 +360,7 @@ app.post('/SignUpUser', function(req, res) {
 		  });
 	});
 app.post('/SignUpProvider', function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 		var encrypted=encrypt(req.body.password);
 		var k = zlib.gzipSync(JSON.stringify(key)).toString('base64');
 		const newUser = {
@@ -395,7 +395,7 @@ app.post('/SignUpProvider', function(req, res) {
 		  });
 	});
 app.post('/Docs', function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 		var img= req.body.path2;
 		var username=req.body.userName;
 		var id;
@@ -421,7 +421,7 @@ app.post('/Docs', function(req, res) {
 	});
 });
 app.post('/rating', function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 		var rating= req.body.rating;
 		var username=req.body.username;
 		console.log(rating);
@@ -479,7 +479,7 @@ catch
 
 // route for user logout
 app.get('/logout', (req, res) => {
-	res.setHeader('Access-Control-Allow-Origin', 'https://comunitate.netlify.app'); 
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3001'); 
 	console.log('Cookie before: '+sess.username);
 	req.session.destroy((err) => {
         if(err) {
