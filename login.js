@@ -339,10 +339,10 @@ app.get('/users/:UserName/:Password', function(req, res) {
 					sess=req.session;
 					sess.username=username;//$_SESSION['username']-create new session
 					console.log('sesiunea e setata'+sess.username);
-					res.send(username);
+					res.end(username);
 				}
 				else 
-					res.send('Nume sau parolă incorectă!');
+					res.end('Nume sau parolă incorectă!');
 			}			
 			res.end();
 		});
