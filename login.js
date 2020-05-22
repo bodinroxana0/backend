@@ -342,7 +342,7 @@ app.get('/users/:UserName/:Password', function(req, res) {
 					res.end(username);
 				}
 				else 
-					res.end('Parolă incorectă!');
+					res.end('wrong');
 			}
 			else
 			{
@@ -350,11 +350,11 @@ app.get('/users/:UserName/:Password', function(req, res) {
 					if (results.length > 0) {
 						console.log(results[0].PasswordIV);
 						console.log(results[0].PasswordData);
-						var kd=JSON.parse(zlib.unzipSync(Buffer.from(results[0].Key,'base64')));
-						console.log(kd.data);
-						var decrypt_pass=decrypt(results[0].PasswordIV,results[0].PasswordData,kd);
-						console.log(decrypt_pass);
-						if(password==decrypt_pass)
+						var kd2=JSON.parse(zlib.unzipSync(Buffer.from(results[0].Key,'base64')));
+						console.log(kd2.data);
+						var decrypt_pass2=decrypt(results[0].PasswordIV,results[0].PasswordData,kd2);
+						console.log(decrypt_pass2);
+						if(password==decrypt_pass2)
 						{
 							sess=req.session;
 							sess.username=username;//$_SESSION['username']-create new session
@@ -362,10 +362,10 @@ app.get('/users/:UserName/:Password', function(req, res) {
 							res.end(username);
 						}
 						else 
-							res.end('Parolă incorectă!');
+							res.end('wrong');
 					}
 					else			
-						res.end("Numele nu a fost gasit in baza de date!");
+						res.end("wrong");
 				});
 			}
 		});
