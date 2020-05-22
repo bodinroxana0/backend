@@ -342,9 +342,32 @@ app.get('/users/:UserName/:Password', function(req, res) {
 					res.end(username);
 				}
 				else 
-					res.end('Nume sau parolă incorectă!');
-			}			
-			res.end();
+					res.end('Parolă incorectă!');
+			}
+			else
+			{
+				connection.query('SELECT * FROM provider WHERE UserName = ? ', [username], function(error, results, fields) {
+					if (results.length > 0) {
+						console.log(results[0].PasswordIV);
+						console.log(results[0].PasswordData);
+						var kd=JSON.parse(zlib.unzipSync(Buffer.from(results[0].Key,'base64')));
+						console.log(kd.data);
+						var decrypt_pass=decrypt(results[0].PasswordIV,results[0].PasswordData,kd);
+						console.log(decrypt_pass);
+						if(password==decrypt_pass)
+						{
+							sess=req.session;
+							sess.username=username;//$_SESSION['username']-create new session
+							console.log('sesiunea e setata'+sess.username);
+							res.end(username);
+						}
+						else 
+							res.end('Parolă incorectă!');
+					}
+					else			
+						res.end("Numele nu a fost gasit in baza de date!");
+				});
+			}
 		});
 	} else {
 		res.send('Introduceți datele!');
