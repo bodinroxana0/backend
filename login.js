@@ -291,7 +291,7 @@ app.get('/users_count', function (req, res) {
 	sess=req.session;
 	sess.username=userID;
 	console.log('Cookie: '+sess.username);
-	res.send('Bun venit, '+username+" !");
+	res.send(username);
 });
 app.post('/LoginGoogle', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
@@ -301,7 +301,7 @@ app.post('/LoginGoogle', function(req, res) {
 	sess=req.session;
 	sess.username=userID;
 	console.log('Cookie: '+sess.username);
-	res.end('Bun venit, '+username+" !");
+	res.send(username);
 });
 app.get('/provider/:FirstName/:LastName', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
@@ -339,7 +339,7 @@ app.get('/users/:UserName/:Password', function(req, res) {
 					sess=req.session;
 					sess.username=username;//$_SESSION['username']-create new session
 					console.log('sesiunea e setata'+sess.username);
-					res.send('Bun venit, '+username+" !");
+					res.send(username);
 				}
 				else 
 					res.send('Nume sau parolă incorectă!');
