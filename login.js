@@ -338,7 +338,7 @@ app.get('/users/:UserName/:Password', function(req, res) {
 				{
 					sess=req.session;
 					sess.username=username;//$_SESSION['username']-create new session
-					//console.log('sesiunea e setata'+sess.username);
+					console.log('sesiunea e setata'+sess.username);
 					res.send('Bun venit, '+username+" !");
 				}
 				else 
