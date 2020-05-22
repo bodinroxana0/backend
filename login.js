@@ -268,6 +268,21 @@ app.get('/users_count', function (req, res) {
 		});
 	}
  });
+ app.get('/logged',function (req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
+	try
+	{
+		console.log(sess.username);
+		if(sess.username!=0)
+			res.end("block");
+		else
+			res.end("none");
+	}
+	catch
+	{ 
+		res.end("Null");
+	}
+ });
  app.post('/LoginFB', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
 	var username = req.body.name;
