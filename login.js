@@ -522,10 +522,10 @@ app.post('/post_chat', function(req, res) {
 		Receiver: req.body.Receiver,
 		Message: req.body.Message
 		};
-		console.log(newUser);
-		connection.query('INSERT INTO user SET ?', newMessage, function (error, results, fields) {
+		console.log(newMessage);
+		connection.query('INSERT INTO chat SET ?', newMessage, function (error, results, fields) {
 			if (error) throw error;
-			res.end(JSON.stringify(results));
+			res.end("ok");
 		  });
 	});
 app.get('/chat/:Sender/:Receiver', function (req, res) {
