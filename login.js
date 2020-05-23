@@ -528,7 +528,7 @@ app.post('/post_chat', function(req, res) {
 			res.end(JSON.stringify(results));
 		  });
 	});
-app.get('/chat/:Sender/:Reicever', function (req, res) {
+app.get('/chat/:Sender/:Receiver', function (req, res) {
 		res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
 		var Sender= req.params.Sender;
 		var Receiver= req.params.Receiver;
