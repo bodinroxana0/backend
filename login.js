@@ -514,7 +514,29 @@ catch
 }
 
 });
-
+app.post('/post_chat', function(req, res) {
+	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
+		const newMessage = {
+		SendingTime: req.body.SendingTime,
+		Sender: req.body.Sender,
+		Receiver: req.body.Receiver,
+		Message: req.body.Message
+		};
+		console.log(newUser);
+		connection.query('INSERT INTO user SET ?', newMessage, function (error, results, fields) {
+			if (error) throw error;
+			res.end(JSON.stringify(results));
+		  });
+	});
+app.get('/chat', function (req, res) {
+		res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
+		var Sender= req.params.Sender;
+		var Receiver= req.params.Receiver;
+		connection.query('SELECT * FROM chat WHERE Sender= ? AND Receiver= ?', [Sender,Receiver], function (error, results, fields) {
+		   if (error) throw error;
+		   res.end(JSON.stringify(results));
+		 });
+	 });
 // route for user logout
 app.get('/logout', (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
