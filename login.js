@@ -12,17 +12,13 @@ const algorithm = 'aes-256-cbc';
 var Buffer = require('buffer').Buffer;
 var zlib = require('zlib');
 var fs = require("fs");
-var https = require('https').createServer(app);
+var https = require('https');
 var helmet = require('helmet');
-var io = require('socket.io')(https);
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 var sess; //to store session
 const PORT = process.env.PORT || 5000;
 
-io.on('connection', (socket) => {
-	console.log('a user connected');
-  });
 //for middleware protection
 app.use(helmet());
 //use cors to allow cross origin resource sharing
@@ -85,6 +81,7 @@ app.use((req, res, next) => {
     }
     next();
 });
+
 // //rest api to get all customers
 app.get('/users', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
@@ -540,7 +537,7 @@ app.get('/chat/:Sender/:Receiver', function (req, res) {
 		   if (error) throw error;
 		   res.end(JSON.stringify(results));
 		 });
-	 });
+ });
 // route for user logout
 app.get('/logout', (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000'); 
