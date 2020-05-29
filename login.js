@@ -12,13 +12,17 @@ const algorithm = 'aes-256-cbc';
 var Buffer = require('buffer').Buffer;
 var zlib = require('zlib');
 var fs = require("fs");
-var https = require('https');
+var https = require('https').createServer(app);
 var helmet = require('helmet');
+var io = require('socket.io')(https);
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 var sess; //to store session
 const PORT = process.env.PORT || 5000;
 
+io.on('connection', (socket) => {
+	console.log('a user connected');
+  });
 //for middleware protection
 app.use(helmet());
 //use cors to allow cross origin resource sharing
