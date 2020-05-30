@@ -534,13 +534,10 @@ app.get('/chat/:Sender/:Receiver', function (req, res) {
 		res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
 		var Sender= req.params.Sender;
 		var Receiver= req.params.Receiver;
-		connection.query('SELECT * FROM chat WHERE Sender= ? AND Receiver= ?', [Sender,Receiver], function (error, results, fields) {
+		connection.query('SELECT * FROM chat WHERE Sender= ? AND Receiver= ?  OR Sender= ? AND Receiver=?', [Sender,Receiver,Receiver,Sender], function (error, results, fields) {
 		   if (error) throw error;
-		   var results1=JSON.stringify(results);
-		 connection.query('SELECT * FROM chat WHERE Sender= ? AND Receiver= ?', [Receiver,Sender], function (error, results, fields) {
-			if (error) throw error;
-			res.end(results1+JSON.stringify(results));
-		  });
+			res.end(JSON.stringify(results));
+			console.log(JSON.stringify(results));
 		});
  });
 // route for user logout
