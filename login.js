@@ -14,6 +14,7 @@ var zlib = require('zlib');
 var fs = require("fs");
 var https = require('https');
 var helmet = require('helmet');
+var http = require('http');
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 var sess; //to store session
