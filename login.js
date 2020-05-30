@@ -536,8 +536,12 @@ app.get('/chat/:Sender/:Receiver', function (req, res) {
 		var Receiver= req.params.Receiver;
 		connection.query('SELECT * FROM chat WHERE Sender= ? AND Receiver= ?', [Sender,Receiver], function (error, results, fields) {
 		   if (error) throw error;
-		   res.end(JSON.stringify(results));
-		 });
+		   var results1=JSON.stringify(results);
+		 connection.query('SELECT * FROM chat WHERE Sender= ? AND Receiver= ?', [Receiver,Sender], function (error, results, fields) {
+			if (error) throw error;
+			res.end(results1+JSON.stringify(results));
+		  });
+		});
  });
 // route for user logout
 app.get('/logout', (req, res) => {
