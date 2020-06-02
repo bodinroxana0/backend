@@ -437,6 +437,7 @@ app.post('/SignUpProvider', function(req, res) {
 		var elem;
 		var res;
 		console.log(username);
+		console.log(img);
 		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
 			if (error) throw error;
 			id=results[0].Id;
