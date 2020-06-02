@@ -404,6 +404,8 @@ app.post('/SignUpProvider', function(req, res) {
 		var encrypted=encrypt(req.body.password);
 		var k = zlib.gzipSync(JSON.stringify(key)).toString('base64');
 		var img= req.body.path2;
+		var id;
+		var elem;
 		var username=req.body.userName;
 		const newUser = {
 		UserName: req.body.userName,
@@ -433,9 +435,6 @@ app.post('/SignUpProvider', function(req, res) {
 				}
 
 			}
-		var id;
-		var elem;
-		var res;
 		console.log(username);
 		console.log(img);
 		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
