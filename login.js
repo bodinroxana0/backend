@@ -403,6 +403,8 @@ app.post('/SignUpProvider', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
 		var encrypted=encrypt(req.body.password);
 		var k = zlib.gzipSync(JSON.stringify(key)).toString('base64');
+		var img= req.body.path2;
+		var username=req.body.userName;
 		const newUser = {
 		UserName: req.body.userName,
 		PasswordIV: encrypted.iv , 
@@ -431,10 +433,31 @@ app.post('/SignUpProvider', function(req, res) {
 				}
 
 			}
-			res.end('ok');
+		var id;
+		var elem;
+		var res;
+		console.log(username);
+		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
+			if (error) throw error;
+			id=results[0].Id;
+			console.log(id);
+		img.forEach(element => {
+			elem={
+				IdProvider: id,
+				Image:element
+			};
+		if(elem.IdProvider && elem.Image){
+			connection.query('INSERT INTO docs SET ?', elem, function (error, results, fields) {
+				if (error) throw error;
+				res.end('ok');
+			});
+		}
+			res.end("error");
 		  });
 	});
-app.post('/Docs', function(req, res) {
+});
+});
+/*app.post('/Docs', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
 		var img= req.body.path2;
 		var username=req.body.userName;
@@ -459,7 +482,7 @@ app.post('/Docs', function(req, res) {
 		}
 	});
 	});
-});
+});*/
 app.post('/rating', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
 		var rating= req.body.rating;
