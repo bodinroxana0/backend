@@ -452,8 +452,7 @@ app.post('/SignUpProvider', function(req, res) {
 				res.end('ok');
 			});
 		}
-			res.end("error");
-		  });
+		});
 	});
 });
 });
