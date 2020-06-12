@@ -19,7 +19,7 @@ const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 var sess; //to store session
 const PORT = process.env.PORT || 5000;
-const ENDPOINT="https://localhost:3000"; // "https://comunitate.netlify.app";  
+const ENDPOINT= "https://comunitate.netlify.app";  //"https://localhost:3000"; 
 //for middleware protection
 app.use(helmet());
 //use cors to allow cross origin resource sharing
@@ -418,6 +418,8 @@ app.post('/SignUpProvider', function(req, res) {
 		Phone: req.body.phone,
 		City: req.body.city,
 		Region: req.body.region,
+		Street: req.body.street,
+		HouseNumber: req.body.housenumber,
 		Birthdate: req.body.birthdate,
 		Services_Id:req.body.services_Id,
 		Description:req.body.description,
