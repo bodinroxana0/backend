@@ -19,7 +19,7 @@ const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 var sess; //to store session
 const PORT = process.env.PORT || 5000;
-const ENDPOINT= "https://comunitate.netlify.app";  //"https://localhost:3000"; 
+const ENDPOINT= "https://localhost:3000"; //"https://comunitate.netlify.app";
 //for middleware protection
 app.use(helmet());
 //use cors to allow cross origin resource sharing
