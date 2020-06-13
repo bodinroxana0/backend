@@ -121,7 +121,7 @@ app.get('/users_count', function (req, res) {
  });
  app.get('/provider_rating', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
-	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id ORDER BY Rating', function (error, results, fields) {
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id ORDER BY Rating DESC', function (error, results, fields) {
 	   if (error) throw error;
 	   res.end(JSON.stringify(results));
 	 });
