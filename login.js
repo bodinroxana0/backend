@@ -348,7 +348,7 @@ app.get('/users/:UserName/:Password', function(req, res) {
 					sess=req.session;
 					sess.username=username;//$_SESSION['username']-create new session
 					console.log('sesiunea e setata'+sess.username);
-					res.end(username);
+					res.end(1,username);
 				}
 				else 
 					res.end('wrong');
@@ -368,7 +368,7 @@ app.get('/users/:UserName/:Password', function(req, res) {
 							sess=req.session;
 							sess.username=username;//$_SESSION['username']-create new session
 							console.log('sesiunea e setata'+sess.username);
-							res.end(username);
+							res.end(2,username);
 						}
 						else 
 							res.end('wrong');
@@ -465,32 +465,6 @@ app.post('/SignUpProvider', function(req, res) {
 	});
 });
 });
-/*app.post('/Docs', function(req, res) {
-	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
-		var img= req.body.path2;
-		var username=req.body.userName;
-		var id;
-		var elem;
-		var res;
-		console.log(username);
-		connection.query('SELECT Id FROM provider WHERE UserName = ? ', [username], function (error, results, fields) {
-			if (error) throw error;
-			id=results[0].Id;
-			console.log(id);
-		img.forEach(element => {
-			elem={
-				IdProvider: id,
-				Image:element
-			};
-		if(elem.IdProvider && elem.Image){
-			connection.query('INSERT INTO docs SET ?', elem, function (error, results, fields) {
-				if (error) throw error;
-				res.end('Contul a fost creat cu succes!');
-			});
-		}
-	});
-	});
-});*/
 app.post('/rating', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
 		var rating= req.body.rating;
