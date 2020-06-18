@@ -329,6 +329,23 @@ app.get('/provider/:FirstName/:LastName', function(req, res) {
 		});
 	}
 });
+app.get('/users/:FirstName/:LastName', function(req, res) {
+	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
+	var firstname = req.params.FirstName;
+	var lastname = req.params.LastName;
+	if (firstname && lastname) {
+		connection.query('SELECT * FROM heroku_50ffed2af4793d2.user WHERE FirstName = ? AND LastName = ?', [firstname,lastname], function(error, results, fields) {
+			if (results.length > 0) {
+				res.end(JSON.stringify(results));
+				console.log(results);
+			}
+			else {
+				console.log('Userul nu exista!');
+			}			
+			res.end();
+		});
+	}
+});
  //Login + setarea session 
 app.get('/users/:UserName/:Password', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
