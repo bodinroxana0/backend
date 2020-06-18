@@ -329,7 +329,7 @@ app.get('/provider/:FirstName/:LastName', function(req, res) {
 		});
 	}
 });
-app.get('/users/:FirstName/:LastName', function(req, res) {
+app.get('/user/:FirstName/:LastName', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
 	var firstname = req.params.FirstName;
 	var lastname = req.params.LastName;
