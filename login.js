@@ -368,7 +368,7 @@ app.get('/users/:UserName/:Password', function(req, res) {
 					res.send({id:'1',username});
 				}
 				else 
-					res.send('wrong');
+					res.end('wrong');
 			}
 			else
 			{
@@ -388,15 +388,15 @@ app.get('/users/:UserName/:Password', function(req, res) {
 							res.send({id:'2',username});
 						}
 						else 
-							res.send('wrong');
+							res.end('wrong');
 					}
 					else			
-						res.send("wrong");
+						res.end("wrong");
 				});
 			}
 		});
 	} else {
-		res.send('Introduceți datele!');
+		res.end('Introduceți datele!');
 		res.end();
 	}
 	});
