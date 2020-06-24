@@ -368,7 +368,7 @@ app.get('/users/:UserName/:Password', function(req, res) {
 					res.send({id:'1',username});
 				}
 				else 
-					res.end('wrong');
+					res.send('wrong');
 			}
 			else
 			{
@@ -388,10 +388,10 @@ app.get('/users/:UserName/:Password', function(req, res) {
 							res.send({id:'2',username});
 						}
 						else 
-							res.end('wrong');
+							res.send('wrong');
 					}
 					else			
-						res.end("wrong");
+						res.send("wrong");
 				});
 			}
 		});
