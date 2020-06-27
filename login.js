@@ -310,7 +310,7 @@ app.get('/users_count', function (req, res) {
 	sess=req.session;
 	sess.username=userID;
 	console.log('Cookie: '+sess.username);
-	res.send(username);
+	res.send({id:'1',username});
 });
 app.post('/LoginGoogle', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
@@ -320,7 +320,7 @@ app.post('/LoginGoogle', function(req, res) {
 	sess=req.session;
 	sess.username=userID;
 	console.log('Cookie: '+sess.username);
-	res.send(username);
+	res.send({id:'1',username});
 });
 app.get('/provider/:FirstName/:LastName', function(req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
