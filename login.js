@@ -199,6 +199,16 @@ app.get('/users_count', function (req, res) {
 	   console.log(results)
 	 });
  });
+ app.get('/searchprovider7/:service/:region', function (req, res) {
+	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
+	var service = req.params.service;
+	var region = req.params.region;
+	connection.query('SELECT * FROM heroku_50ffed2af4793d2.provider INNER JOIN heroku_50ffed2af4793d2.services ON heroku_50ffed2af4793d2.provider.services_Id = heroku_50ffed2af4793d2.services.Id WHERE ServiceName= ? AND Region= ?',[service,region], function (error, results, fields) {
+	   if (error) throw error;
+	   res.end(JSON.stringify(results));
+	   console.log(results)
+	 });
+ });
  app.get('/cities', function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', ENDPOINT); 
 	connection.query('select * from cities', function (error, results, fields) {
